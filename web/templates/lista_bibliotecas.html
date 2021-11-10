@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Livro</th>
+                <th>Aluno</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for biblioteca in biblioteca %}
+            <tr>
+                <td>{{biblioteca.id}}</td>
+                <td>{{biblioteca.livro}}</td>
+                <td>{{biblioteca.aluno}}</td>
+                <td>{{biblioteca.data_Entrada}}</td>
+                <td>
+                    <a href="{% url 'editar_biblioteca' biblioteca.id %}">Editar</a>
+                    <a href="{% url 'remover_biblioteca' biblioteca.id %}">Remover</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<a href="{% url 'cadastrar_biblioteca' %}" class="btn btn-primary">Cadastrar</a>
+{% endblock conteudo %}

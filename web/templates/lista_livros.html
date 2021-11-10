@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Autor</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for livro in livros %}
+            <tr>
+                <td>{{livro.id}}</td>
+                <td>{{livro.livro}}</td>
+                <td>{{livro.aluno}}</td>
+                <td>{{livro.data_Entrada}}</td>
+                <td>
+                    <a href="{% url 'editar_livro' livro.id %}">Editar</a>
+                    <a href="{% url 'remover_livro' livro.id %}">Remover</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<a href="{% url 'cadastrar_livro' %}" class="btn btn-primary">Cadastrar</a>
+{% endblock conteudo %}

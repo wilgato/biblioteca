@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load easy_mask %}
+{% block conteudo %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Cep</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+            <tr>
+                <td>{{aluno.id}}</td>
+                <td>{{aluno.nome_aluno}}</td>
+                <td>{{aluno.email}}</td>
+                <td>{{aluno.cep| cep}}</td>
+                <td>
+                    <a href="{% url 'editar_aluno' aluno.id %}">Editar</a>
+                    <a href="{% url 'remover_aluno' aluno.id %}">Remover</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<a href="{% url 'cadastrar_aluno' %}" class="btn btn-primary">Cadastrar</a>
+{% endblock conteudo %}
