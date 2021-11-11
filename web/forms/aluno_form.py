@@ -21,3 +21,7 @@ class AlunoForm(forms.ModelForm):
         def clean_telefone(self):
             telefone = self.cleaned_data['telefone']
             return telefone.replace("(", "").replace(")", "").replace(" ", "").replace("-", "")
+
+
+
+
